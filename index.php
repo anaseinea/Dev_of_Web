@@ -85,7 +85,7 @@
                     ."</div>"
                 ."<div class='card-content'>"
                   ."<span class='card-title activator grey-text text-darken-4' style='font-size:1.2rem;'>".$prods2["descriptionS"]
-                   . "<input type='checkbox' id='test".$i."' /><label style='float: right;' for='test".$i."'></label></span>"
+                   . "<input type='checkbox' id='test".$i."' name='check".$i."' /><label style='float: right;' for='test".$i."'></label></span>"
 
                     ."<p style='color: orange;'>".$prods2["price"]." AED</p>"
                   ."</div><div class='card-reveal'>"
@@ -97,7 +97,7 @@
                 }
         ?>
             
-        <div class="col s12 m12 l12"><a class="waves-effect waves-light btn">Checkout</a></div>
+        <div class="col s12 m12 l12"><input style="margin-top: 7;" class="waves-effect waves-light btn" type="submit" name="submit" value="Checkout" /></div>
         </form>
         </div>
 
