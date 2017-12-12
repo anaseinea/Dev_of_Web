@@ -107,13 +107,16 @@
                 }
                 
                     
-            
+            $user = $connection->query("SELECT balance FROM users WHERE username='".$_SESSION['username']."'");
 
-            
+            $_SESSION['total'] = $total;
+            $_SESSION['balance'] = mysqli_fetch_row($user)[0];
            
         
-            echo "<p class='center-align'>Total amount: ".$total."<br/>Your balance: "./*snap.val().*/"</p>";
-
+            echo "<p class='center-align'>Total amount: ".$total."<br/>Your balance: ".$_SESSION['balance']."</p>".
+            "<form action='buyItemsInKart.php' method='post'>".
+                "<input style='float: right;margin-top: 7;' class='waves-effect waves-light btn' type='submit' name='submit' value='Checkout' /></form>";
+                
 
 
 ?>
