@@ -64,27 +64,29 @@
         <!--<a class="waves-effect waves-light btn" href="#modal1">Modal</a> the modal trigger -->
         <!-- Modal Structure -->
         <div id="modal1" class="modal">
-            <div class="modal-content" style="padding-bottom: 0px;">
-                <h4 style="text-align: center;">Please enter your credentials<br/></h4>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="email" type="email" class="validate">
-                        <label for="email">Email</label>
+            <form action="login.php" method="post">
+                <div class="modal-content" style="padding-bottom: 0px;">
+                    <h4 style="text-align: center;">Please enter your credentials<br/></h4>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="email" type="email" class="validate">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="password" type="password" class="validate">
+                            <label for="password">Password</label>
+                        </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="password" type="password" class="validate">
-                        <label for="password">Password</label>
-                    </div>
+                <div class="modal-footer">
+                    <a style="margin-right:25px; margin-bottom:25px" onclick="signIn()" href="#!" class="modal-action modal-close waves-effect waves-light red btn">LOGIN</a>
+                    <a style="margin-right:5px; margin-bottom:25px" onclick="signUp()" href="#!" class="modal-action modal-close waves-effect waves-light red btn">SIGNUP</a>
                 </div>
-            </div>
-            
-            <div class="modal-footer">
-                <a style="margin-right:25px; margin-bottom:25px" onclick="signIn()" href="#!" class="modal-action modal-close waves-effect waves-light red btn">LOGIN</a>
-                <a style="margin-right:5px; margin-bottom:25px" onclick="signUp()" href="#!" class="modal-action modal-close waves-effect waves-light red btn">SIGNUP</a>
-            </div>
+            </form>
         </div>
         
         <div id="modal2" class="modal modal-fixed-footer">
