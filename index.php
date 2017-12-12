@@ -1,3 +1,4 @@
+<?php session_start(); $in = isset($_SESSION["username"]); ?>
 <html>
     <head>
         <link href="css/materialize.min.css" rel="stylesheet">
@@ -35,7 +36,7 @@
         
         <nav class="red">
             <div class="nav-wrapper container">
-                <a href="index.html" class="brand-logo center"><img src="/Dev_of_Web/Pics/Logo.png" width="166" height="62"></a>
+                <a href="index.php" class="brand-logo center"><img src="/Dev_of_Web/Pics/Logo.png" width="166" height="62"></a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="left hide-on-med-and-down">
                     <li><a href="About.html">About</a></li>
@@ -44,18 +45,18 @@
                 </ul>
                 
                 <ul class="right hide-on-med-and-down">
-                    <li><button id="loginModal" class="waves-effect modal-trigger waves-light red btn z-depth-3" data-target="login">LOGIN</button></li>
-                    <li><a id="registerModal" class="waves-effect modal-trigger waves-light red btn z-depth-3" href="#register">Register</a></li>
-                    <li><a onclick="logout()" id="logout" class="waves-effect waves-light red btn hide">LOGOUT</a></li>
-                    <li><a onclick="" id="kart" class="waves-effect waves-light red btn hide" data-target="modal2">Cart</a></li>
+                    <li><button id="loginModal" class="waves-effect modal-trigger waves-light red btn <?php if($in) echo "hide"; ?>" data-target="login">LOGIN</button></li>
+                    <li><a id="registerModal" class="waves-effect modal-trigger waves-light red btn <?php if($in) echo "hide"; ?>" href="#register">Register</a></li>
+                    <li><a href="logout.php" id="logout" class="waves-effect waves-light red btn <?php if(!$in) echo "hide"; ?>">LOGOUT</a></li>
+                    <li><a onclick="" id="kart" class="waves-effect waves-light red btn <?php if(!$in) echo "hide"; ?>" data-target="modal2">Cart</a></li>
                 </ul>
                 
                 <ul class="side-nav" id="mobile-demo">
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Category<i class="material-icons right">arrow_drop_down</i></a></li>
-                    <li><a id="loginModalm" class="waves-effect modal-trigger waves-light red btn z-depth-1" href="#login">LOGIN</a></li>
-                    <li><a id="registerModalm" class="waves-effect modal-trigger waves-light red btn z-depth-1" href="#register">Register</a></li>
-                    <li><a onclick="logout()" id="logoutm" class="waves-effect waves-light red btn hide">LOGOUT</a></li>
-                    <li><a onclick="" id="kartm" class="waves-effect waves-light red btn hide" data-target="modal2">Cart</a></li>
+                    <li><a id="loginModalm" class="waves-effect modal-trigger waves-light red btn <?php if($in) echo "hide"; ?>" href="#login">LOGIN</a></li>
+                    <li><a id="registerModalm" class="waves-effect modal-trigger waves-light red btn <?php if($in) echo "hide"; ?>" href="#register">Register</a></li>
+                    <li><a href="logout.php" id="logoutm" class="waves-effect waves-light red btn <?php if(!$in) echo "hide"; ?>">LOGOUT</a></li>
+                    <li><a onclick="" id="kartm" class="waves-effect waves-light red btn <?php if(!$in) echo "hide"; ?>" data-target="modal2">Cart</a></li>
                     <li><a href="About.html">About</a></li>
                 </ul>
             </div>
@@ -106,55 +107,55 @@
         <div id="login" class="modal">
             <form action="login.php" method="post">
                 <div class="modal-content" style="padding-bottom: 0px;">
-                    <h5 style="text-align: center;">Please enter your credentials<br/></h4>
+                    <h5 style="text-align: center;">Please enter your credentials<br/></h5>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="email" type="email" class="validate">
+                            <input id="email" name="email" type="email" class="validate" required>
                             <label for="email">Email</label>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="password" type="password" class="validate">
+                            <input id="password" name="password" type="password" class="validate" required>
                             <label for="password">Password</label>
                         </div>
                     </div>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" style="margin-right:25px; margin-bottom:25px" class="modal-action modal-close waves-effect waves-light red btn">LOGIN</button>
+                    <button type="submit" style="margin-right:25px; margin-bottom:25px" class="modal-action waves-effect waves-light red btn">LOGIN</button>
                 </div>
             </form>
         </div>
         <div id="register" class="modal">
             <form action="register.php" method="post">
                 <div class="modal-content" style="padding-bottom: 0px;">
-                    <h5 style="text-align: center;">Register your new account<br/></h4>
+                    <h5 style="text-align: center;">Register your new account<br/></h5>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="username" type="text" class="validate">
+                            <input id="username" name="username" type="text" class="validate" required>
                             <label for="username">Username</label>
                         </div>
                         <div class="input-field col s6">
-                            <input id="reg_email" type="email" class="validate">
+                            <input id="reg_email" name="email" type="email" class="validate" required>
                             <label for="reg_email">Email</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="balance" type="number" class="validate">
+                            <input id="balance" name="balance" type="number" class="validate" required>
                             <label for="balance">Balance</label>
                         </div>
                         <div class="input-field col s6">
-                            <input id="reg_password" type="password" class="validate">
+                            <input id="reg_password" name="password" type="password" class="validate" required>
                             <label for="reg_password">Password</label>
                         </div>
                     </div>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" style="margin-right:25px; margin-bottom:25px" class="modal-action modal-close waves-effect waves-light red btn">Register</button>
+                    <button type="submit" style="margin-right:25px; margin-bottom:25px" class="modal-action waves-effect waves-light red btn">Register</button>
                 </div>
             </form>
         </div>

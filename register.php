@@ -1,5 +1,5 @@
 <?php
-    if(isset($_POST["email"]) && isset($_POST["password"])) {
+    if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["username"]) && isset($_POST["balance"])) {
         define("HOSTNAME", "localhost");
         define("USERNAME", "root");
         define("PASSWORD", "");
@@ -8,13 +8,10 @@
         if(!($db = @mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DATABASE)))
             die("couldn't connect to database");
         else {
-            $user = mysqli_fetch_array($db->query("select username, password from users where email='".$_POST["email"]."';"));
+            $db->query("insert into users values ('".$_POST["email"]."','".crypt($_POST["password"], "hi")."','".$_POST["username"]."',".$_POST["balance"].");");
             session_start();
 
-            if(isset($user["username"]) && crypt($_POST["password"], "hi") == $user["password"])
-                $_SESSION["username"] = $user["username"];
-            else 
-                $_SESSION["error"] = "login_error";
+            $_SESSION["username"] = $_POST["username"];
 
             $db->close();
         }
