@@ -44,14 +44,16 @@
                 </ul>
                 
                 <ul class="right hide-on-med-and-down">
-                    <li><a id="loginModal" class="waves-effect waves-light red btn z-depth-3" data-target="modal1">LOGIN</a></li>
+                    <li><button id="loginModal" class="waves-effect modal-trigger waves-light red btn z-depth-3" data-target="login">LOGIN</button></li>
+                    <li><a id="registerModal" class="waves-effect modal-trigger waves-light red btn z-depth-3" href="#register">Register</a></li>
                     <li><a onclick="logout()" id="logout" class="waves-effect waves-light red btn hide">LOGOUT</a></li>
                     <li><a onclick="" id="kart" class="waves-effect waves-light red btn hide" data-target="modal2">Cart</a></li>
                 </ul>
                 
                 <ul class="side-nav" id="mobile-demo">
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Category<i class="material-icons right">arrow_drop_down</i></a></li>
-                    <li><a id="loginModalm" class="waves-effect waves-light red btn z-depth-1" data-target="modal1">LOGIN</a></li>
+                    <li><a id="loginModalm" class="waves-effect modal-trigger waves-light red btn z-depth-1" href="#login">LOGIN</a></li>
+                    <li><a id="registerModalm" class="waves-effect modal-trigger waves-light red btn z-depth-1" href="#register">Register</a></li>
                     <li><a onclick="logout()" id="logoutm" class="waves-effect waves-light red btn hide">LOGOUT</a></li>
                     <li><a onclick="" id="kartm" class="waves-effect waves-light red btn hide" data-target="modal2">Cart</a></li>
                     <li><a href="About.html">About</a></li>
@@ -107,28 +109,60 @@
 
         <!--<a class="waves-effect waves-light btn" href="#modal1">Modal</a> the modal trigger -->
         <!-- Modal Structure -->
-        <div id="modal1" class="modal">
-            <div class="modal-content" style="padding-bottom: 0px;">
-                <h4 style="text-align: center;">Please enter your credentials<br/></h4>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="email" type="email" class="validate">
-                        <label for="email">Email</label>
+        <div id="login" class="modal">
+            <form action="login.php" method="post">
+                <div class="modal-content" style="padding-bottom: 0px;">
+                    <h5 style="text-align: center;">Please enter your credentials<br/></h4>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="email" type="email" class="validate">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="password" type="password" class="validate">
+                            <label for="password">Password</label>
+                        </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="password" type="password" class="validate">
-                        <label for="password">Password</label>
+                <div class="modal-footer">
+                    <button type="submit" style="margin-right:25px; margin-bottom:25px" class="modal-action modal-close waves-effect waves-light red btn">LOGIN</button>
+                </div>
+            </form>
+        </div>
+        <div id="register" class="modal">
+            <form action="register.php" method="post">
+                <div class="modal-content" style="padding-bottom: 0px;">
+                    <h5 style="text-align: center;">Register your new account<br/></h4>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="username" type="text" class="validate">
+                            <label for="username">Username</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="reg_email" type="email" class="validate">
+                            <label for="reg_email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="balance" type="number" class="validate">
+                            <label for="balance">Balance</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="reg_password" type="password" class="validate">
+                            <label for="reg_password">Password</label>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="modal-footer">
-                <a style="margin-right:25px; margin-bottom:25px" onclick="signIn()" href="#!" class="modal-action modal-close waves-effect waves-light red btn">LOGIN</a>
-                <a style="margin-right:5px; margin-bottom:25px" onclick="signUp()" href="#!" class="modal-action modal-close waves-effect waves-light red btn">SIGNUP</a>
-            </div>
+
+                <div class="modal-footer">
+                    <button type="submit" style="margin-right:25px; margin-bottom:25px" class="modal-action modal-close waves-effect waves-light red btn">Register</button>
+                </div>
+            </form>
         </div>
         
         <div id="modal2" class="modal modal-fixed-footer">
@@ -154,7 +188,12 @@
         </div>
     </footer>
         
-        
+<script>
+$( document ).ready(function(){
+    $(".button-collapse").sideNav();
+    $('.modal').modal({startingTop: '40%', endingTop: '10%'});
+})
+</script>
         
     </body>
 </html>
