@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 10, 2017 at 09:45 PM
+-- Generation Time: Dec 12, 2017 at 07:51 PM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `webapps`
+-- Database: `products`
 --
 
 -- --------------------------------------------------------
@@ -64,6 +64,28 @@ INSERT INTO `products` (`descriptionS`, `descriptionL`, `image`, `name`, `price`
 ('Premium Backpack', 'Water-Resistant / Includes Rain Cover. Holds Controller with Range Extender. Holds Five Flight Batteries + Charger. Holds Laptop Up to 15\". Works as Shoulder Bag or Backpack.', 'Bag3.jpg', 'Original Phantom Backpack', 350, 'Bag'),
 ('Dark-brown Leather Backpack', 'Fossil is an American watch and lifestyle company, creatively rooted in authentic vintage and classic design. We strive to create high-quality watches, bags and more that preserve the best of the past while updating it for today. When the clean lines of the mid-century meet the modern looks of today, the result is key items that represent the best.', 'Bag4.jpg', 'Fossil Messenger Bag', 110, 'Bag'),
 ('Light-brown Leather Backpack', 'A man on-the-go needs something in his back pocket (or over his shoulder) to carry him through the day. In our opinion, the Graham messenger fits the bill—in lighter-weight fabric for spring and extra room for his laptop.\r\n\r\nGet tech smart—this bag is large enough to hold laptops up to 15 inch.', 'Bag5.jpg', 'Graham Messenger Bag', 70, 'Bag');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `email` varchar(50) NOT NULL,
+  `password` text NOT NULL,
+  `username` text NOT NULL,
+  `balance` int(20) NOT NULL,
+  PRIMARY KEY (`email`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`email`, `password`, `username`, `balance`) VALUES
+('eineao@gmail.com', 'hilD1catY4cJI', 'omar', 9995170);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

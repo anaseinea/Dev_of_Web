@@ -9,29 +9,6 @@
     </head>
 
     <body>
-        <ul id="dropdown1" class="dropdown-content">
-            <li><a onclick="setTag('All')" href="#!">All</a></li>
-            <li class="divider"></li>
-            <li><a onclick="setTag('Furniture')" href="#!">Furniture</a></li>
-            <li class="divider"></li>
-            <li><a onclick="setTag('Printers')" href="#!">Printers</a></li>
-            <li class="divider"></li>
-            <li><a onclick="setTag('Notebooks')" href="#!">Notebooks</a></li>
-            <li class="divider"></li>
-            <li><a onclick="setTag('Bags')" href="#!">Bags</a></li>
-        </ul>
-        
-        <ul id="dropdown2" class="dropdown-content">
-            <li><a onclick="setTag('All')" href="#!">All</a></li>
-            <li class="divider"></li>
-            <li><a onclick="setTag('Furniture')" href="#!">Furniture</a></li>
-            <li class="divider"></li>
-            <li><a onclick="setTag('Printers')" href="#!">Printers</a></li>
-            <li class="divider"></li>
-            <li><a onclick="setTag('Notebooks')" href="#!">Notebooks</a></li>
-            <li class="divider"></li>
-            <li><a onclick="setTag('Bags')" href="#!">Bags</a></li>
-        </ul>
         
         <nav class="red">
             <div class="nav-wrapper container">
@@ -40,22 +17,8 @@
                 <ul class="left hide-on-med-and-down">
                     <li><a href="About.html">About</a></li>
                     <!-- Dropdown Trigger -->
-                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Category<i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
                 
-                <ul class="right hide-on-med-and-down">
-                    <li><a id="loginModal" class="waves-effect waves-light red btn z-depth-3" data-target="modal1">LOGIN</a></li>
-                    <li><a onclick="logout()" id="logout" class="waves-effect waves-light red btn hide">LOGOUT</a></li>
-                    <li><a onclick="" id="kart" class="waves-effect waves-light red btn hide" data-target="modal2">Cart</a></li>
-                </ul>
-                
-                <ul class="side-nav" id="mobile-demo">
-                    <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Category<i class="material-icons right">arrow_drop_down</i></a></li>
-                    <li><a id="loginModalm" class="waves-effect waves-light red btn z-depth-1" data-target="modal1">LOGIN</a></li>
-                    <li><a onclick="logout()" id="logoutm" class="waves-effect waves-light red btn hide">LOGOUT</a></li>
-                    <li><a onclick="" id="kartm" class="waves-effect waves-light red btn hide" data-target="modal2">Cart</a></li>
-                    <li><a href="About.html">About</a></li>
-                </ul>
             </div>
         </nav>
         <div class="row container">
@@ -115,37 +78,12 @@
         
             echo "<p class='center-align'>Total amount: ".$total."<br/>Your balance: ".$_SESSION['balance']."</p>".
             "<form action='buyItemsInKart.php' method='post'>".
-                "<input style='float: right;margin-top: 7;' class='waves-effect waves-light btn' type='submit' name='submit' value='Checkout' /></form>";
+                "<button style='float: right;margin-top: 7;' class='waves-effect waves-light btn' type='submit' name='submit' >Checkout</button></form>";
                 
 
 
 ?>
         </div> 
-        <!--<a class="waves-effect waves-light btn" href="#modal1">Modal</a> the modal trigger -->
-        <!-- Modal Structure -->
-        <div id="modal1" class="modal">
-            <div class="modal-content" style="padding-bottom: 0px;">
-                <h4 style="text-align: center;">Please enter your credentials<br/></h4>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="email" type="email" class="validate">
-                        <label for="email">Email</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="password" type="password" class="validate">
-                        <label for="password">Password</label>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="modal-footer">
-                <a style="margin-right:25px; margin-bottom:25px" onclick="signIn()" href="#!" class="modal-action modal-close waves-effect waves-light red btn">LOGIN</a>
-                <a style="margin-right:5px; margin-bottom:25px" onclick="signUp()" href="#!" class="modal-action modal-close waves-effect waves-light red btn">SIGNUP</a>
-            </div>
-        </div>
         
         <div id="modal2" class="modal modal-fixed-footer">
             <div id="kartModal" class="modal-content row container"></div>

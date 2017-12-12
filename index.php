@@ -75,12 +75,13 @@
             $tag = "all";
             if(isset($_GET['tag']))
                 $tag = $_GET['tag'];
-        $i = 0;
+        $i = -1;
         while($prods2 = mysqli_fetch_array($prods)){
                  //prompt(prods[1].name);
                     /*if(tag != 'all')
                         if(tag != prods[i].tag)
                             continue;*/
+            $i++;
             if($tag != "all" && $tag != $prods2['tag'])
                 continue;
             
@@ -100,11 +101,11 @@
                   ."<p>".$prods2["descriptionL"]."</p>"
                ." </div>"
              ." </div></div>";
-            $i++;
+            
                 }
         ?>
             
-        <div class="col s12 m12 l12"><input style="margin-top: 7;" class="waves-effect waves-light btn" type="submit" name="submit" value="Checkout" /></div>
+        <div class="col s12 m12 l12"><button style="margin-top: 7;" class="waves-effect waves-light btn <?php if(!$in) echo "hide"; ?>" type="submit" name="submit" >Checkout</button></div>
         </form>
         </div>
 
