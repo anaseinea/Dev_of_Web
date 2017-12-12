@@ -1,48 +1,41 @@
 var tag = 'all';
 (function(){
-    
-    
     var config = {
-            apiKey: "AIzaSyC-2UOMd7CS8yT7FSMzqiXrTyd2dBjSfFg",
-            authDomain: "it-in-e-comm.firebaseapp.com",
-            databaseURL: "https://it-in-e-comm.firebaseio.com",
-            projectId: "it-in-e-comm",
-            storageBucket: "it-in-e-comm.appspot.com",
-            messagingSenderId: "347563138555"
-          };
-          firebase.initializeApp(config);
-            
-            
-            putTheProds();
+        apiKey: "AIzaSyC-2UOMd7CS8yT7FSMzqiXrTyd2dBjSfFg",
+        authDomain: "it-in-e-comm.firebaseapp.com",
+        databaseURL: "https://it-in-e-comm.firebaseio.com",
+        projectId: "it-in-e-comm",
+        storageBucket: "it-in-e-comm.appspot.com",
+        messagingSenderId: "347563138555"
+        };
+    
+    firebase.initializeApp(config);
+    putTheProds();
     
         
-        firebase.auth().onAuthStateChanged(user =>{
-            var logout = document.getElementById("logout");
-            var logoutm = document.getElementById("logoutm");
-            var login = document.getElementById("loginModal");
-            var loginm = document.getElementById("loginModalm");
-            if(user){
-                console.log("logged in");
-                Materialize.toast('Wellcome you are logged in !', 3000);
-                updateKart(user);
-                logout.classList.remove("hide");
-                logoutm.classList.remove("hide");
-                login.classList.add("hide");
-                loginm.classList.add("hide");
-            }else{
-                Materialize.toast('Wellcome login if you want to buy something', 3000);
-                console.log("wrong info not loged in");
-                logout.classList.add("hide");
-                logoutm.classList.add("hide");
-                login.classList.remove("hide");
-                loginm.classList.remove("hide");
-            }
-            
-        });
-    
-    
-            
-    
+    firebase.auth().onAuthStateChanged(user =>{
+        var logout = document.getElementById("logout");
+        var logoutm = document.getElementById("logoutm");
+        var login = document.getElementById("loginModal");
+        var loginm = document.getElementById("loginModalm");
+        if(user){
+            console.log("logged in.");
+            Materialize.toast('Welcome. You are logged in!', 3000);
+            updateKart(user);
+            logout.classList.remove("hide");
+            logoutm.classList.remove("hide");
+            login.classList.add("hide");
+            loginm.classList.add("hide");
+        }
+        else{
+            Materialize.toast('Welcome. Login if you want to buy something.', 3000);
+            console.log("wrong info, Not loged in.");
+            logout.classList.add("hide");
+            logoutm.classList.add("hide");
+            login.classList.remove("hide");
+            loginm.classList.remove("hide");
+        }        
+    });
     
 }());
 function putTheProds(){
@@ -87,10 +80,10 @@ function signIn(){
     var auth = firebase.auth();
     const promise = auth.signInWithEmailAndPassword(email,pass);
     promise.catch(e => {//console.log(e.message)
-                       if(e.message.includes("There is no user record corresponding to this identifier"))
-                           Materialize.toast('User doesnt exist, create one !', 3000);//console.log("no user with this email exists");
-                        else if(e.message.includes("The password is invalid"))
-                            Materialize.toast('Wrong password', 3000);//console.log("wrong pass");
+                       if(e.message.includes("There is no user record corresponding to this identifier."))
+                           Materialize.toast('User doesnt exist, Create one!', 3000);//console.log("no user with this email exists");
+                        else if(e.message.includes("The password is invalid."))
+                            Materialize.toast('Wrong password.', 3000);//console.log("wrong pass");
                        });
 }
 function signUp(){
@@ -102,10 +95,10 @@ function signUp(){
    // console.log(promise);
 
     promise.catch(e => {//console.log(e.message)
-                       if(e.message.includes("The email address is badly formatted"))
-                           Materialize.toast('Wrong email', 3000);//console.log("wrong email");
+                       if(e.message.includes("The email address is badly formatted."))
+                           Materialize.toast('Wrong email address.', 3000);//console.log("wrong email");
                         else if(e.message == "")
-                            prompt("nothing in message");
+                            prompt("Nothing in message.");
                        });
    
     setTimeout(checkUser, 2000);
@@ -190,7 +183,7 @@ function updateKart(user){
                                                     }
                                                     var kart = snap.val()+'';
                                                     var kartModal = document.getElementById('kartModal');
-                                                    kartModal.innerHTML = '<h4  class="center">Shopping kart</h4>';
+                                                    kartModal.innerHTML = '<h4  class="center">Shopping Cart</h4>';
                                                     var kartProds;
                                                     if(kart.includes(','))
                                                         kartProds = kart.split(',');
