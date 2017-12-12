@@ -11,15 +11,15 @@
 
     <body>
         <ul id="dropdown1" class="dropdown-content">
-            <li><a onclick="setTag('All')" href="#!">All</a></li>
+            <li><a onclick="setTag('All')" href="index.php">All</a></li>
             <li class="divider"></li>
-            <li><a onclick="setTag('Furniture')" href="#!">Furniture</a></li>
+            <li><a onclick="setTag('Furniture')" href="index.php?tag=Furniture">Furniture</a></li>
             <li class="divider"></li>
-            <li><a onclick="setTag('Printers')" href="#!">Printers</a></li>
+            <li><a onclick="setTag('Printers')" href="index.php?tag=Printer">Printers</a></li>
             <li class="divider"></li>
-            <li><a onclick="setTag('Notebooks')" href="#!">Notebooks</a></li>
+            <li><a onclick="setTag('Notebooks')" href="index.php?tag=Notebook">Notebooks</a></li>
             <li class="divider"></li>
-            <li><a onclick="setTag('Bags')" href="#!">Bags</a></li>
+            <li><a onclick="setTag('Bags')" href="index.php?tag=Bag">Bags</a></li>
         </ul>
         
         <ul id="dropdown2" class="dropdown-content">
@@ -72,12 +72,18 @@
         DEFINE ('DB_NAME', 'products');
         $connection = mysqli_connect (DB_HOST, DB_USER, "", DB_NAME);
         $prods = $connection->query("SELECT * FROM products");
+            $tag = "all";
+            if(isset($_GET['tag']))
+                $tag = $_GET['tag'];
         $i = 0;
         while($prods2 = mysqli_fetch_array($prods)){
                  //prompt(prods[1].name);
                     /*if(tag != 'all')
                         if(tag != prods[i].tag)
                             continue;*/
+            if($tag != "all" && $tag != $prods2['tag'])
+                continue;
+            
                 echo " <div class='col s12 m6 l4'><div class='card hoverable'>"
                ." <div class='card-image waves-effect waves-block waves-light'>"
                   ."<img class='activator' src='/Dev_of_Web/Pics/".$prods2["image"]
